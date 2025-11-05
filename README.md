@@ -1,0 +1,24 @@
+# PIX Payment Service - Heroku (Real mode template with Pagar.me)
+
+This project is prepared to be deployed to **Heroku**. It is configured for **real-mode** integration with Pagar.me (you must provide your Pagar.me API key and enable payouts on your account).
+
+**Important:** This code is a template. Do NOT go to production without implementing full security, KYC, legal compliance, and webhook signature verification.
+
+## Quick deploy (Heroku)
+1. Create a Heroku app and add Heroku Postgres addon.
+2. In Heroku Dashboard > Settings > Config Vars, add:
+   - DATABASE_URL (Heroku sets this automatically when Postgres addon is added)
+   - PAGARME_API_KEY
+   - PAGARME_PAYOUT_URL (default: https://api.pagar.me/core/v5/transfers)
+   - DEMO_USER_ID (optional)
+   - WEBHOOK_SECRET (optional)
+3. Deploy: push this repo to GitHub and connect Heroku to it, or `git push heroku main`.
+4. After deploy, test endpoints:
+   - GET /v1/wallet
+   - POST /v1/withdrawals  { amount, pix_key, pix_key_type, destination_name }
+   - POST /v1/webhooks/psp
+
+## Notes
+- Use sandbox API keys for testing.
+- Configure webhook URL in Pagar.me to: https://<your-heroku-app>.herokuapp.com/v1/webhooks/psp
+- Implement audit logs, KYC, webhook signature verification before production.
