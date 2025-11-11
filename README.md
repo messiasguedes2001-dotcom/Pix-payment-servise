@@ -11,7 +11,7 @@ This project is prepared to be deployed to **Heroku**. It is configured for **re
    - PAGARME_API_KEY (sua chave sandbox ou live do Pagar.me)
    - PAGARME_PAYOUT_URL (https://api.pagar.me/core/v5/transfers)
    - DEMO_USER_ID (11111111-1111-1111-1111-111111111111)
-   - WEBHOOK_SECRET (optional)
+   - WEBHOOK_SECRET (https://<seu-app>.onrender.com/v1/webhooks/psp)
 3. Deploy: push this repo to GitHub and connect Heroku to it, or `git push heroku main`.
 4. After deploy, test endpoints:
    - GET /v1/wallet
